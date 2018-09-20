@@ -1,19 +1,21 @@
 package dots;
 
+import static java.lang.Math.abs;
+
 /**
  *
  * @author Andrey
  */
-public class Punto {
+public class Punto extends Node {
     private int x;
     private int y;
     private LinkedList vecinos;
-    
-    public Punto(int x, int y){
+
+    public void setXY(int x, int y){
         this.x=x;
-        this.y=y;    
+        this.y=y;
     }
-    
+
     public int getX(){
         return this.x;
     }
