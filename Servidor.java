@@ -17,9 +17,9 @@ public class Servidor {
     public void levantarConexion(int puerto) {
         try {
             serverSocket = new ServerSocket(puerto);
-            mostrarTexto("Esperando conexión entrante en el puerto " + String.valueOf(puerto) + "...");
+            mostrarTexto("Esperando conexiï¿½n entrante en el puerto " + String.valueOf(puerto) + "...");
             socket = serverSocket.accept();
-            mostrarTexto("Conexión establecida con: " + socket.getInetAddress().getHostName() + "\n\n\n");
+            mostrarTexto("Conexiï¿½n establecida con: " + socket.getInetAddress().getHostName() + "\n\n\n");
         } catch (Exception e) {
             mostrarTexto("Error en levantarConexion(): " + e.getMessage());
             System.exit(0);
@@ -65,7 +65,7 @@ public class Servidor {
     public void escribirDatos() {
         while (true) {
             System.out.print("[Usted] => ");
-            enviar(escaner.nextLine());   
+            enviar(escaner.nextLine());
         }
     }
 
@@ -75,9 +75,9 @@ public class Servidor {
             bufferDeSalida.close();
             socket.close();
         } catch (IOException e) {
-          mostrarTexto("Excepción en cerrarConexion(): " + e.getMessage());
+          mostrarTexto("Excepciï¿½n en cerrarConexion(): " + e.getMessage());
         } finally {
-            mostrarTexto("Conversación finalizada....");
+            mostrarTexto("Conversaciï¿½n finalizada....");
             System.exit(0);
 
         }

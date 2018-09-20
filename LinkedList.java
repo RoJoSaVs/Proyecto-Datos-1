@@ -1,18 +1,9 @@
 package dots;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- *
- * @author Andrey
- */
 public class LinkedList{
     private Node head;
     private int size;
-    
+
     public LinkedList(){
         this.head= null;
         this.size=0;
@@ -82,8 +73,8 @@ public class LinkedList{
             Node nuevo = new Node();
             nuevo.setData(data);
             this.head = nuevo;
-            
-        } 
+
+        }
         else {
             Node head = this.head;
             Node current_last = head;
@@ -106,7 +97,3 @@ public class LinkedList{
         return current.getData();
     }
 }
-    
-            
-        
-            

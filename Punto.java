@@ -1,11 +1,5 @@
 package dots;
 
-import static java.lang.Math.abs;
-
-/**
- *
- * @author Andrey
- */
 public class Punto extends Node {
     private int x;
     private int y;

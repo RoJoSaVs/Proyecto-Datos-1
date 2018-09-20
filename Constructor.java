@@ -1,10 +1,5 @@
 package dots;
 
-
-/**
- *
- * @author Andrey
- */
 public class Constructor {
     private LinkedList Fila1= new LinkedList();
 

@@ -1,8 +1,5 @@
 package dots;
-/**
- *
- * @author Andrey
- */
+
 public class Node{
     private Object data;
     private Node next;
@@ -23,5 +20,5 @@ public class Node{
     public void setNext(Node node){
         this.next=node;
     }
-   
+
 }
