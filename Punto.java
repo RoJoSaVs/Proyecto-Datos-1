@@ -17,7 +17,7 @@ public class Punto extends Node {
         return this.y;
     }
     public LinkedList getVecinos(){
-        return vecinos;
+        return this.vecinos;
     }
     public void agregarVecino(Node vecino){
         vecinos.insertFirst(vecino.getData());
