@@ -1,3 +1,5 @@
+package dots;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -38,7 +40,7 @@ public class FrameJuego extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		PanelInfo panelInfo = new PanelInfo();
 		panelInfo.setForeground(new Color(0, 153, 102));
 		panelInfo.setBackground(new Color(32, 178, 170));

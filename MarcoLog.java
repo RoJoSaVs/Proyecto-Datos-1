@@ -1,3 +1,5 @@
+package dots;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -51,7 +53,7 @@ public class MarcoLog extends JFrame {
 		contentPane.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(32, 178, 170)));
 		setContentPane(contentPane);
 		contentPane.setLayout(new MigLayout("", "[-2.00][71.00][][284.00]", "[43.00][28.00][71.00]"));
-		
+
 		JButton btnX = new JButton("X");
 		btnX.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -62,17 +64,17 @@ public class MarcoLog extends JFrame {
 		btnX.setBackground(new Color(95, 158, 160));
 		btnX.setFont(new Font("Tahoma", Font.BOLD, 12));
 		contentPane.add(btnX, "cell 3 0,alignx right");
-		
+
 		JLabel lblJugador = new JLabel("Jugador:");
 		lblJugador.setFont(new Font("Tahoma", Font.BOLD, 12));
 		contentPane.add(lblJugador, "cell 1 1");
-		
+
 		tfJugador = new JTextField();
 		tfJugador.setBackground(new Color(230, 230, 250));
 		tfJugador.setFont(new Font("Tahoma", Font.BOLD, 12));
 		contentPane.add(tfJugador, "cell 3 1,grow");
 		tfJugador.setColumns(10);
-		
+
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.setForeground(new Color(255, 255, 255));
 		btnRegistrarse.setBackground(new Color(95, 158, 160));

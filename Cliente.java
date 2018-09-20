@@ -1,4 +1,4 @@
-package servidorchat;
+package dots;
 
 import java.net.*;
 import java.io.*;
@@ -16,7 +16,7 @@ public class Cliente {
             socket = new Socket(ip, puerto);
             mostrarTexto("Conectado a :" + socket.getInetAddress().getHostName());
         } catch (Exception e) {
-            mostrarTexto("Excepción al levantar conexión: " + e.getMessage());
+            mostrarTexto("Excepciï¿½n al levantar conexiï¿½n: " + e.getMessage());
             System.exit(0);
         }
     }
@@ -49,7 +49,7 @@ public class Cliente {
             bufferDeEntrada.close();
             bufferDeSalida.close();
             socket.close();
-            mostrarTexto("Conexión terminada");
+            mostrarTexto("Conexiï¿½n terminada");
         } catch (IOException e) {
             mostrarTexto("IOException on cerrarConexion()");
         }finally{
