@@ -1,3 +1,5 @@
+package Dots;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
