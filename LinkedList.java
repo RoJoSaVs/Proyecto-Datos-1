@@ -14,9 +14,17 @@ public class LinkedList{
     public int size(){
         return this.size;
     }
-    public void insertFirst(Object data){
+    public void insertFirstN(Object data){
         Node newNode= new Node();
         newNode.setData(data);
+        newNode.setNext(this.head);
+        this.head=newNode;
+        this.size++;
+    }
+    public void insertFirstP(int x,int y,Object data){
+        Punto newNode= new Punto();
+        newNode.setData(data);
+        newNode.setXY(x,y);
         newNode.setNext(this.head);
         this.head=newNode;
         this.size++;
@@ -95,5 +103,13 @@ public class LinkedList{
             i -= 1;
         }
         return current.getData();
+    }
+    public Punto recorrerL(int i){
+        Punto current = (Punto) this.head;
+        while(i > 0){
+            current = (Punto) current.getNext();
+            i -= 1;
+        }
+        return current;
     }
 }

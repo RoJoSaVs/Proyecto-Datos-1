@@ -15,11 +15,10 @@ public class Constructor {
                 Punto punto= new Punto();
                 punto.setXY(x,y);
                 punto.setData(c1);
-                columna.insertFirst(punto);
+                columna.insertFirstP(punto.getX(),punto.getY(),punto.getData());
                 c--;
             }
-            columna.displayList();
-            Fila1.insertFirst(columna);
+            Fila1.insertFirstN(columna);
             tamaño--;
         }
 
