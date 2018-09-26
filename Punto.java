@@ -3,7 +3,7 @@ package dots;
 public class Punto extends Node {
     private int x;
     private int y;
-    private LinkedList rect = new LinkedList();
+    private LinkedList rect;
     private LinkedList vecinos;
     private LinkedList enlazados;
     private LinkedList enlazadosAux=enlazados;
