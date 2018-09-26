@@ -53,17 +53,9 @@ class PanelMalla extends JPanel implements MouseListener{
 
 				Punto pto_temp = L2.recorrerL(j);
 
-				pto_temp.setRect(D, C, 8, 8);
+				pto_temp.setRect(D, C, 20, 20);
 
-
-
-				Rectangle2D rectangulo = new Rectangle2D.Double(D, C, 8, 8);
-
-				Ellipse2D ovalo = new Ellipse2D.Double();
-
-				ovalo.setFrame(rectangulo);
-
-				g2.draw(ovalo);
+				g2.fillOval(D, C, 20, 20);
 
 				C+=50;
 			}
@@ -90,24 +82,36 @@ class PanelMalla extends JPanel implements MouseListener{
 
 				LinkedList rect = pto_temp.getRect();
 
+				boolean b_temp = pto_temp.getEstado();
+
 				Object X = rect.recorrer(0);
 				int CX = (int) X;
 
 				Object Y = rect.recorrer(1);
 				int CY = (int) Y;
 
-				if((e.getButton() == 1)
-					&& (e.getX() >= CX && e.getX() <= CX+8 && e.getY() >= CY && e
-					.getY() <= CY+8)) {
+				if((b_temp == false) && (e.getButton() == 1)
+					&& (e.getX() >= CX && e.getX() <= CX+15 && e.getY() >= CY && e
+					.getY() <= CY+15)) {
 
 
 					Graphics g = getGraphics();
 					g.setColor(Color.green);
-					g.fillOval(CX-7, CY-7, 20, 20);
+					g.fillOval(CX, CY, 21, 21);
+					pto_temp.setEstado();
 
+				}else{
+					if((b_temp == true) && (e.getButton() == 1)
+							&& (e.getX() >= CX && e.getX() <= CX+15 && e.getY() >= CY && e
+							.getY() <= CY+15)) {
+						Graphics g = getGraphics();
+						g.setColor(Color.black);
+						g.fillOval(CX, CY, 21, 21);
+						pto_temp.setEstado();
+
+					}
 
 				}
-
 
 			}
 
