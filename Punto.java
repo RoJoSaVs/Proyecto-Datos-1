@@ -42,9 +42,6 @@ public class Punto extends Node {
     public LinkedList getVecinos(){
         return this.vecinos;
     }
-    public void agregarVecino(Node vecino){
-        vecinos.insertFirstN(vecino.getData());
-    }
     public LinkedList getEnlazados(){
         return this.enlazados;
     }
