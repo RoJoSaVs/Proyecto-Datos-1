@@ -3,12 +3,19 @@ package dots;
 public class Punto extends Node {
     private int x;
     private int y;
+<<<<<<< HEAD
     private LinkedList rect = new LinkedList();
+=======
+>>>>>>> 7d5c6c71511627485a8e156d5370ad78d71c778b
     private LinkedList vecinos;
     private LinkedList enlazados;
     private LinkedList enlazadosAux=enlazados;
     private boolean estado=false;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 7d5c6c71511627485a8e156d5370ad78d71c778b
     public void setEstado(){
         if (this.estado==false){
             this.estado=true;
@@ -17,22 +24,31 @@ public class Punto extends Node {
             this.estado=false;
         }
     }
+<<<<<<< HEAD
 
     public boolean getEstado(){
         return this.estado;
     }
 
+=======
+    
+    public boolean getEstado(){
+        return this.estado;
+    }
+    
+>>>>>>> 7d5c6c71511627485a8e156d5370ad78d71c778b
     public void setXY(int x, int y){
         this.x=x;
-        this.y=y;
+        this.y=y;    
     }
-
+    
     public int getX(){
         return this.x;
     }
     public int getY(){
         return this.y;
     }
+<<<<<<< HEAD
     public void setRect(int rectX, int rectY, int grosX, int grosY){
         rect.insertFirstN(grosY);
         rect.insertFirstN(grosX);
@@ -52,6 +68,11 @@ public class Punto extends Node {
     public LinkedList getVecinos(){
         return this.vecinos;
     }
+=======
+    public LinkedList getVecinos(){
+        return this.vecinos;
+    }
+>>>>>>> 7d5c6c71511627485a8e156d5370ad78d71c778b
     public LinkedList getEnlazados(){
         return this.enlazados;
     }
