@@ -20,9 +20,6 @@ public class Punto extends Node {
     public boolean getEstado(){
         return this.estado;
     }
-    public boolean getEstado(){
-        return this.estado;
-    }
     public void setXY(int x, int y){
         this.x=x;
         this.y=y;
