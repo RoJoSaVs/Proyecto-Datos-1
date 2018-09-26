@@ -8,6 +8,27 @@ public class Punto extends Node {
     private LinkedList enlazados;
     private LinkedList enlazadosAux=enlazados;
     private boolean estado=false;
+    
+    public void enlazar(Punto newEnlace){
+        int c = this.vecinos.size()-1;
+        while (c>0){
+            if(newEnlace.getData()==this.vecinos.recorrerL(c).getData()){
+                int c2=this.enlazados.size();
+                while(c2>0){
+                    if(newEnlace.getData()==this.enlazados.recorrerL(c)){
+                        c2=0;
+                    }
+                    else{
+                        c2--;
+                    }
+                }
+                this.enlazados.insertFirstP(newEnlace.getX(), newEnlace.getY(), newEnlace.getData());
+            }
+            else{
+                c--;
+            }
+        }
+    }
 
     public void setEstado(){
         if (this.estado==false){
