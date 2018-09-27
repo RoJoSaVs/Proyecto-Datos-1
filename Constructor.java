@@ -3,7 +3,7 @@ package dots;
 public class Constructor {
     private LinkedList Fila1= new LinkedList();
 
-    public void Matriz(int tamaño){
+    public Constructor(int tamaño){
         int size=tamaño;
         while(tamaño>0){
             int c = size;
