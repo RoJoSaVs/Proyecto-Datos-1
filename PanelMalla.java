@@ -3,11 +3,9 @@ package dots;
 
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.geom.*;
 
 
 
@@ -91,8 +89,8 @@ class PanelMalla extends JPanel implements MouseListener{
 				int CY = (int) Y;
 
 				if((b_temp == false) && (e.getButton() == 1)
-					&& (e.getX() >= CX && e.getX() <= CX+15 && e.getY() >= CY && e
-					.getY() <= CY+15)) {
+					&& (e.getX() >= CX && e.getX() <= CX+20 && e.getY() >= CY && e
+					.getY() <= CY+20)) {
 
 
 					Graphics g = getGraphics();
@@ -102,8 +100,8 @@ class PanelMalla extends JPanel implements MouseListener{
 
 				}else{
 					if((b_temp == true) && (e.getButton() == 1)
-							&& (e.getX() >= CX && e.getX() <= CX+15 && e.getY() >= CY && e
-							.getY() <= CY+15)) {
+							&& (e.getX() >= CX && e.getX() <= CX+20 && e.getY() >= CY && e
+							.getY() <= CY+20)) {
 						Graphics g = getGraphics();
 						g.setColor(Color.black);
 						g.fillOval(CX, CY, 21, 21);

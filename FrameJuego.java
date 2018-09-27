@@ -1,12 +1,10 @@
 package dots;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.FlowLayout;
 import java.awt.Color;
 
 public class FrameJuego extends JFrame {
@@ -46,5 +44,9 @@ public class FrameJuego extends JFrame {
 		panelInfo.setBackground(new Color(32, 178, 170));
 		panelInfo.setBounds(0, 0, 225, 561);
 		contentPane.add(panelInfo);
+
+		PanelMalla panelMalla = new PanelMalla();
+		panelMalla.setBounds(235, 11, 639, 539);
+		contentPane.add(panelMalla);
 	}
 }

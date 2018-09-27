@@ -1,8 +1,6 @@
 package dots;
 
 import javax.swing.JPanel;
-import java.awt.GridLayout;
-import java.awt.FlowLayout;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JLabel;

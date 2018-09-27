@@ -1,14 +1,8 @@
 package dots;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -46,8 +40,8 @@ public class MarcoLog extends JFrame {
 	public MarcoLog() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400, 160);
-		setUndecorated(false);
+		setBounds(450, 270, 400, 160);
+		setUndecorated(true);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(102, 205, 170));
 		contentPane.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(32, 178, 170)));
