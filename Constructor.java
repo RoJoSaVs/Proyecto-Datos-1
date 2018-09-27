@@ -3,11 +3,11 @@ package dots;
 public class Constructor {
     private LinkedList Fila1= new LinkedList();
 
-    public Constructor(int tamaño){
-        int size=tamaño;
-        while(tamaño>0){
+    public Constructor(int tam){
+        int size=tam;
+        while(tam>0){
             int c = size;
-            int c1=tamaño-1;
+            int c1=tam-1;
             LinkedList columna = new LinkedList();
             while (c>0){
                 int x =0;
@@ -19,7 +19,7 @@ public class Constructor {
                 c--;
             }
             Fila1.insertFirstN(columna);
-            tamaño--;
+            tam--;
         }
 
     }
