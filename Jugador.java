@@ -11,7 +11,7 @@ public class Jugador {
     
 
     public void setFigura(Figura nueva){
-        figuras.insertFirstN(nueva);
+        figuras.insertFirst(nueva);
 
     }
 

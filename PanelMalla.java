@@ -49,7 +49,7 @@ class PanelMalla extends JPanel implements MouseListener{
 
 			for (int j=0; j<L2.size(); j++) {
 
-				Punto pto_temp = L2.recorrerL(j);
+				Punto pto_temp = (Punto) L2.recorrer(j);
 
 				pto_temp.setRect(D, C, 20, 20);
 
@@ -76,7 +76,7 @@ class PanelMalla extends JPanel implements MouseListener{
 
 			for (int j=0; j<L2.size(); j++) {
 
-				Punto pto_temp = L2.recorrerL(j);
+				Punto pto_temp = (Punto) L2.recorrer(j);
 
 				LinkedList rect = pto_temp.getRect();
 
