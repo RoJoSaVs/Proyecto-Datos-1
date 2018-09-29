@@ -3,26 +3,40 @@ package dots;
 public class Punto extends Node {
     private int x;
     private int y;
+    private int columna;
+    private int fila;
     private LinkedList rect = new LinkedList();
     private LinkedList vecinos;
     private LinkedList enlazados;
     private LinkedList enlazadosAux=enlazados;
     private boolean estado=false;
     
+    public void setPos(int columna,int fila){
+        this.columna=columna;
+        this.fila=fila;
+        
+    }
+    public int getColumna(){
+        return this.columna;
+    }
+    public int getFila(){
+        return this.fila;
+    }
+    
     public boolean enlazar(Punto newEnlace){
         int c = this.vecinos.size()-1;
         while (c>0){
-            if(newEnlace.getData()==this.vecinos.recorrerL(c).getData()){
+            if(newEnlace==this.vecinos.recorrer(c)){
                 int c2=this.enlazados.size();
                 while(c2>0){
-                    if(newEnlace.getData()==this.enlazados.recorrerL(c)){
+                    if(newEnlace==this.enlazados.recorrer(c)){
                         return false;
                     }
                     else{
                         c2--;
                     }
                 }
-                this.enlazados.insertFirstP(newEnlace.getX(), newEnlace.getY(), newEnlace.getData());
+                this.enlazados.insertFirst(newEnlace);
                 return true;
             }
             else{
@@ -54,10 +68,10 @@ public class Punto extends Node {
         return this.y;
     }
     public void setRect(int rectX, int rectY, int grosX, int grosY){
-        rect.insertFirstN(grosY);
-        rect.insertFirstN(grosX);
-        rect.insertFirstN(rectY);
-        rect.insertFirstN(rectX);
+        rect.insertFirst(grosY);
+        rect.insertFirst(grosX);
+        rect.insertFirst(rectY);
+        rect.insertFirst(rectX);
     }
     public LinkedList getRect(){
       return this.rect;
@@ -75,15 +89,15 @@ public class Punto extends Node {
         this.enlazadosAux= newAux;
     }
     public void agregarVecino(Punto vecino){
-        vecinos.insertFirstP(vecino.getX(),vecino.getY(),vecino.getData());
+        vecinos.insertFirst(vecino);
     }
     public void agregarEnlazado(Punto vecino){
-        enlazados.insertFirstP(vecino.getX(),vecino.getY(),vecino.getData());
+        enlazados.insertFirst(vecino);
     }
     public boolean Enlazado(Punto verif){
         int recorrido= this.enlazados.size();
         while (recorrido>0){
-            if(verif.getX() == this.enlazados.recorrerL(recorrido).getX() && verif.getY() == this.enlazados.recorrerL(recorrido).getY() ){
+            if(verif==this.enlazados.recorrer(recorrido)){
                 return true;
             }
             else{
