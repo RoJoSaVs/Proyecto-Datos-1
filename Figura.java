@@ -14,40 +14,48 @@ public class Figura {
         int puntos= creada.getLineas()*2;
         return puntos;
     }
-    public void recorrerFig(Punto inicial, Punto recorre, Punto eliminar, LinkedList vecinos, LinkedList newFigura, int sizeEcurrent, LinkedList recorridos){
+    public boolean cierraFig(Punto inicial, Punto recorre, Punto eliminar, LinkedList vecinos, LinkedList newFigura, int sizeEcurrent, LinkedList recorridos){
         vecinos.delete(eliminar);
-        if (inicial.getX()==recorre.getX() && inicial.getY()==inicial.getY()){
-            recorridos.insertFirstP(inicial.getX(), inicial.getY(), inicial.getData());
-            newFigura.insertFirstP(inicial.getX(),inicial.getY(),inicial.getData());
-            fCreadas.insertFirstN(newFigura);
+        if (inicial.getFila()==recorre.getFila() && inicial.getColumna()==inicial.getColumna()){
+            recorridos.insertFirst(recorre);
+            newFigura.insertFirst(recorre);
+            fCreadas.insertLast(newFigura);
             while(recorridos.size()>0){
-                recorridos.recorrerL(recorridos.size()).setAux(recorridos.recorrerL(recorridos.size()).getVecinos());
-                recorridos.delete(recorridos.recorrerL(recorridos.size()));
+                Punto current = (Punto) recorridos.recorrer(recorridos.size());
+                LinkedList vecinosC = current.getVecinos();
+                current.setAux(vecinosC);
+                recorridos.delete(current);
             }
+            return true;
         }
         else if(sizeEcurrent>0){
-            if(recorre.Enlazado(vecinos.recorrerL(sizeEcurrent))){
-                newFigura.insertFirstP(vecinos.recorrerL(sizeEcurrent).getX(),vecinos.recorrerL(sizeEcurrent).getY(),vecinos.recorrerL(sizeEcurrent).getData());
-                sizeEcurrent--;
-                recorrerFig(inicial, vecinos.recorrerL(sizeEcurrent),recorre,vecinos.recorrerL(sizeEcurrent).getAux(),newFigura,vecinos.recorrerL(sizeEcurrent).getVecinos().size(), recorridos);
+            Punto eCurrent=(Punto) vecinos.recorrer(sizeEcurrent);
+            if(recorre.Enlazado(eCurrent)){
+                recorridos.insertFirst(eCurrent);
+                recorre.getAux().delete(eCurrent);
+                newFigura.insertFirst(eCurrent);
+                eCurrent.getAux().delete(recorre);
+                cierraFig(inicial, eCurrent,recorre,eCurrent.getAux(),newFigura,eCurrent.getVecinos().size(), recorridos);
             }
             else{
-                recorrerFig(inicial,recorre,eliminar,vecinos,newFigura,sizeEcurrent--,recorridos);
+                cierraFig(inicial,recorre,eliminar,vecinos,newFigura,sizeEcurrent--,recorridos);
             }
 
         }
         else if(eliminar.getAux().size()>0){
             newFigura.delete(recorre);
-            recorrerFig(inicial,eliminar,recorre,eliminar.getAux(),newFigura,eliminar.getAux().size(), recorridos);
+            cierraFig(inicial,eliminar,recorre,eliminar.getAux(),newFigura,eliminar.getAux().size(), recorridos);
 
         }
         else{
             while(recorridos.size()>0){
-                recorridos.recorrerL(recorridos.size()).setAux(recorridos.recorrerL(recorridos.size()).getVecinos());
-                recorridos.delete(recorridos.recorrerL(recorridos.size()));
-
+                Punto current = (Punto) recorridos.recorrer(recorridos.size());
+                LinkedList vecinosC = current.getVecinos();
+                current.setAux(vecinosC);
+                recorridos.delete(current);
             }
         }
+        return false;
 
     }
 }
