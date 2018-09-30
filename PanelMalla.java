@@ -22,6 +22,8 @@ class PanelMalla extends JPanel implements MouseListener{
 	private Punto inicial_tmp;
 	
 	private LinkedList coords_tmp = new LinkedList();
+	
+	private int JugadorC = 0;
 
 
 	public PanelMalla() {
@@ -101,7 +103,11 @@ class PanelMalla extends JPanel implements MouseListener{
 					if((b_temp == false) && (pto_inicial == false)) {
 
 							Graphics g = getGraphics();
-							g.setColor(Color.green);
+							if (JugadorC % 2 == 0) {
+								g.setColor(Color.green);
+							}else {
+								g.setColor(Color.yellow);
+							}
 							g.fillOval(CX, CY, 21, 21);
 							pto_temp.setEstado();
 							pto_inicial = true;
@@ -121,7 +127,12 @@ class PanelMalla extends JPanel implements MouseListener{
 								if ((Math.abs(CX-DX) < 60) && (Math.abs(CY-DY) < 60 )) {
 									
 									Graphics g = getGraphics();
-									g.setColor(Color.green);
+									
+									if (JugadorC % 2 == 0) {
+										g.setColor(Color.green);
+									}else {
+										g.setColor(Color.yellow);
+									}
 				
 									Graphics2D g2 = (Graphics2D) g;
 									g2.setStroke(new BasicStroke(6));
@@ -135,6 +146,7 @@ class PanelMalla extends JPanel implements MouseListener{
 									coords_tmp.deleteFirst();
 									inicial_tmp.setEstado();
 									pto_inicial = false;
+									JugadorC ++;
 								}else {
 									JFrame advertencia = new JFrame();
 									advertencia.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
