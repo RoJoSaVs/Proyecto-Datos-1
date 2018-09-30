@@ -94,61 +94,81 @@ class PanelMalla extends JPanel implements MouseListener{
 
 				Object Y = rect.recorrer(1);
 				int CY = (int) Y;
+				
+				if((e.getButton() == 1) && (e.getX() >= CX && e.getX() <= CX+20 && e.getY() >= CY 
+						&& e.getY() <= CY+20)) {
+					
+					if((b_temp == false) && (pto_inicial == false)) {
 
-				if((b_temp == false) && (pto_inicial == false) && (e.getButton() == 1)
-					&& (e.getX() >= CX && e.getX() <= CX+20 && e.getY() >= CY && e
-					.getY() <= CY+20)) {
-
-
-					Graphics g = getGraphics();
-					g.setColor(Color.green);
-					g.fillOval(CX, CY, 21, 21);
-					pto_temp.setEstado();
-					pto_inicial = true;
-					coords_tmp.insertFirst(CY);
-					coords_tmp.insertFirst(CX);
-					inicial_tmp = pto_temp; 
-
-				}else{
-					if((b_temp == false) && (pto_inicial) && (e.getButton() == 1)
-							&& (e.getX() >= CX && e.getX() <= CX+20 && e.getY() >= CY && e
-							.getY() <= CY+20)) {
-						Graphics g = getGraphics();
-						g.setColor(Color.green);
-						g.fillOval(CX, CY, 21, 21);
-						
-						
-						Object X2 = coords_tmp.recorrer(0);
-						int DX = (int) X2;
-						
-						Object Y2 = coords_tmp.recorrer(1);
-						int DY = (int) Y2;
-						
-						Graphics2D g2 = (Graphics2D) g;
-						g2.setStroke(new BasicStroke(6));
-						g2.drawLine(DX+10, DY+10, CX+10, CY+10);
-						
-						coords_tmp.deleteFirst();
-						coords_tmp.deleteFirst();
-						inicial_tmp.setEstado();
-						pto_inicial = false;
-						
-
-					}else{
-						if((b_temp == true) && (e.getButton() == 1)
-								&& (e.getX() >= CX && e.getX() <= CX+20 && e.getY() >= CY && e
-								.getY() <= CY+20)) {
 							Graphics g = getGraphics();
-							g.setColor(Color.black);
+							g.setColor(Color.green);
 							g.fillOval(CX, CY, 21, 21);
 							pto_temp.setEstado();
-							pto_inicial = false;
-							coords_tmp.deleteFirst();
-							coords_tmp.deleteFirst();
-						}
-					
-					}
+							pto_inicial = true;
+							coords_tmp.insertFirst(CY);
+							coords_tmp.insertFirst(CX);
+							inicial_tmp = pto_temp; 
 
+						}else{
+							if((b_temp == false) && (pto_inicial)) {
+								
+								Object X2 = coords_tmp.recorrer(0);
+								int DX = (int) X2;
+								
+								Object Y2 = coords_tmp.recorrer(1);
+								int DY = (int) Y2;
+								
+								if ((Math.abs(CX-DX) < 60) && (Math.abs(CY-DY) < 60 )) {
+									
+									Graphics g = getGraphics();
+									g.setColor(Color.green);
+				
+									Graphics2D g2 = (Graphics2D) g;
+									g2.setStroke(new BasicStroke(6));
+									g2.drawLine(DX+10, DY+10, CX+10, CY+10);
+									
+									g.setColor(Color.black);
+									g.fillOval(CX, CY, 21, 21);
+									g.fillOval(DX, DY, 21, 21);
+									
+									coords_tmp.deleteFirst();
+									coords_tmp.deleteFirst();
+									inicial_tmp.setEstado();
+									pto_inicial = false;
+								}else {
+									JFrame advertencia = new JFrame();
+									advertencia.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+									advertencia.setBounds(550, 450, 400, 115);
+									advertencia.setResizable(false);
+									advertencia.setVisible(true);
+									advertencia.setLayout(null);
+
+									JLabel lbladv = new JLabel("Movimiento no válido");
+									lbladv.setFont(new Font("Tahoma", Font.BOLD, 14));
+									lbladv.setBounds(141, 34, 158, 14);
+									advertencia.add(lbladv);
+									
+									JLabel lblimg = new JLabel("");
+									lblimg.setIcon(new ImageIcon("C:\\Users\\andre\\eclipse-workspace\\Hola mundo\\advertencia.png"));
+									lblimg.setBounds(58, 22, 56, 32);
+									advertencia.add(lblimg);
+								}
+
+							}else{
+								if(b_temp == true) {
+									
+									Graphics g = getGraphics();
+									g.setColor(Color.black);
+									g.fillOval(CX, CY, 21, 21);
+									pto_temp.setEstado();
+									pto_inicial = false;
+									coords_tmp.deleteFirst();
+									coords_tmp.deleteFirst();
+								}
+							
+							}
+
+						}
 				}
 
 			}
