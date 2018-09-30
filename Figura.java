@@ -14,18 +14,19 @@ public class Figura {
         int puntos= creada.getLineas()*2;
         return puntos;
     }
-    public void recorrerFig(Punto inicial, Punto recorre, Punto eliminar, LinkedList vecinos, LinkedList newFigura, int sizeEcurrent, LinkedList recorridos){
+    public boolean cierraFig(Punto inicial, Punto recorre, Punto eliminar, LinkedList vecinos, LinkedList newFigura, int sizeEcurrent, LinkedList recorridos){
         vecinos.delete(eliminar);
-        if (inicial.getX()==recorre.getX() && inicial.getY()==inicial.getY()){
+        if (inicial.getFila()==recorre.getFila() && inicial.getColumna()==inicial.getColumna()){
             recorridos.insertFirst(recorre);
             newFigura.insertFirst(recorre);
-            fCreadas.insertFirst(newFigura);
+            fCreadas.insertLast(newFigura);
             while(recorridos.size()>0){
                 Punto current = (Punto) recorridos.recorrer(recorridos.size());
                 LinkedList vecinosC = current.getVecinos();
                 current.setAux(vecinosC);
                 recorridos.delete(current);
             }
+            return true;
         }
         else if(sizeEcurrent>0){
             Punto eCurrent=(Punto) vecinos.recorrer(sizeEcurrent);
@@ -34,16 +35,16 @@ public class Figura {
                 recorre.getAux().delete(eCurrent);
                 newFigura.insertFirst(eCurrent);
                 eCurrent.getAux().delete(recorre);
-                recorrerFig(inicial, eCurrent,recorre,eCurrent.getAux(),newFigura,eCurrent.getVecinos().size(), recorridos);
+                cierraFig(inicial, eCurrent,recorre,eCurrent.getAux(),newFigura,eCurrent.getVecinos().size(), recorridos);
             }
             else{
-                recorrerFig(inicial,recorre,eliminar,vecinos,newFigura,sizeEcurrent--,recorridos);
+                cierraFig(inicial,recorre,eliminar,vecinos,newFigura,sizeEcurrent--,recorridos);
             }
 
         }
         else if(eliminar.getAux().size()>0){
             newFigura.delete(recorre);
-            recorrerFig(inicial,eliminar,recorre,eliminar.getAux(),newFigura,eliminar.getAux().size(), recorridos);
+            cierraFig(inicial,eliminar,recorre,eliminar.getAux(),newFigura,eliminar.getAux().size(), recorridos);
 
         }
         else{
@@ -54,6 +55,7 @@ public class Figura {
                 recorridos.delete(current);
             }
         }
+        return false;
 
     }
 }
