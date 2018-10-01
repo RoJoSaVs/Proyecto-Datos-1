@@ -9,7 +9,11 @@ import java.awt.event.MouseListener;
 
 
 
-
+/**
+ * Clase: PanelMalla
+ * @author Jose
+ * @version 1.10.2018
+ */
 
 class PanelMalla extends JPanel implements MouseListener{
 
@@ -25,19 +29,41 @@ class PanelMalla extends JPanel implements MouseListener{
 	
 	private int JugadorC = 0;
         
-        private Figura f_temp = new Figura();
+    private Figura f_temp = new Figura();
         
-        private LinkedList fg= new LinkedList();
+    private LinkedList fg= new LinkedList();
         
-        private LinkedList rec= new LinkedList();
+    private LinkedList rec= new LinkedList();
+    
+    private Jugador J1 = new Jugador();
+    
+    private Jugador J2 = new Jugador();
 	
-
+    /**
+     * Método constructor de la clase "PanelMalla".
+     */
 	public PanelMalla() {
 	}
-
+	
+	/**
+	 * Obtiene el puntaje de los jugadores según el valor que se le solicite.
+	 * @param n
+	 * @return J2.getPuntaje()
+	 */
+	public int getPtje(int n) {
+		if (n == 1) {
+			return this.J1.getPuntaje(); 
+		} else {
+			return this.J2.getPuntaje();
+		}
+	}
+	
+	/**
+	 * Maneja el trazado de puntos y lineas.
+	 * @param g
+	 */
 	public void paintComponent(Graphics g) {
 		
-		//Malla.setVecinos(Malla.getLista(), Malla.getLista().size()-1);
 
 		LinkedList listaG = Malla.getLista();
 
@@ -81,7 +107,11 @@ class PanelMalla extends JPanel implements MouseListener{
 
 
 	}
-
+	
+	/**
+	 * Detección cuando el mouse es accionado.
+	 * @param e
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -132,7 +162,7 @@ class PanelMalla extends JPanel implements MouseListener{
 								Object Y2 = coords_tmp.recorrer(1);
 								int DY = (int) Y2;
 								if (inicial_tmp.puedeEnlazar(pto_temp)) {
-//								if ((Math.abs(CX-DX) < 60) && (Math.abs(CY-DY) < 60 )) {
+
 									
 									Graphics g = getGraphics();
 									
@@ -146,13 +176,50 @@ class PanelMalla extends JPanel implements MouseListener{
 									g2.setStroke(new BasicStroke(6));
 									g2.drawLine(DX+10, DY+10, CX+10, CY+10);
 									
+									inicial_tmp.enlazar(pto_temp);
+									pto_temp.enlazar(inicial_tmp);
+									
+                                    if(f_temp.cierraFig(inicial_tmp, pto_temp, inicial_tmp, pto_temp.getAux(), fg, pto_temp.getAux().size()-1, rec)) {
+                                    	System.out.println("k");
+                                    	LinkedList rellenar = f_temp.getUltimaFig();
+                                    	
+                                    	int []x = new int[rellenar.size()];
+                                    	
+                                    	int []y = new int[rellenar.size()];
+                                    	
+                                    	int s = rellenar.size();
+                                    	System.out.println(s);
+                                    	for (int n=0; n<rellenar.size(); n++) {
+                                    		
+                                    		Punto pto_rell = (Punto) rellenar.recorrer(n);
+                                    		
+                                    		LinkedList rect_rell = pto_rell.getRect();
+
+                            				Object Xr = rect_rell.recorrer(0);
+                            				int XR = (int) Xr;
+                            				x[n] = XR+10;
+
+                            				Object Yr = rect_rell.recorrer(1);
+                            				int YR = (int) Yr;
+                            				y[n] = YR+10;
+                                    		
+                                    	}
+                                    	System.out.println("k");
+                                    	g.fillPolygon(x, y, s);
+                                    	
+                                    	if ((JugadorC % 2) == 0) {
+                                    		J2.setPuntos(100);
+                                    	} else {
+                                    		J1.setPuntos(100);
+                                    	}
+                                    }
+									
 									g.setColor(Color.black);
 									g.fillOval(CX, CY, 21, 21);
 									g.fillOval(DX, DY, 21, 21);
 									
-									inicial_tmp.enlazar(pto_temp);
-									pto_temp.enlazar(inicial_tmp);
-                                                                        f_temp.cierraFig(inicial_tmp, pto_temp, inicial_tmp, pto_temp.getAux(), fg, pto_temp.getAux().size()-1, rec);
+									
+									
                                                                         
 									coords_tmp.deleteFirst();
 									coords_tmp.deleteFirst();
@@ -201,27 +268,40 @@ class PanelMalla extends JPanel implements MouseListener{
 		}
 				
 	}
-
+	
+	/**
+	 * Detecta cuando el cursor entra al componente.
+	 * @param arg0
+	 */
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
+	public void mouseEntered(MouseEvent arg0) { //No se hace uso de este método, mas se debe incluir debido a que se está haciendo un "implements".
 		// TODO Auto-generated method stub
 
 	}
-
+	/**
+	 * Detecta cuando el cursor sale del componente.
+	 * @param arg0
+	 */
 	@Override
-	public void mouseExited(MouseEvent arg0) {
+	public void mouseExited(MouseEvent arg0) { //No se hace uso de este método, mas se debe incluir debido a que se está haciendo un "implements".
 		// TODO Auto-generated method stub
 
 	}
-
+	/**
+	 * Detecta cuando el mouse se encuentra presionado.
+	 * @param arg0
+	 */
 	@Override
-	public void mousePressed(MouseEvent arg0) {
+	public void mousePressed(MouseEvent arg0) { //No se hace uso de este método, mas se debe incluir debido a que se está haciendo un "implements".
 		// TODO Auto-generated method stub
 
 	}
-
+	/**
+	 * Detecta cuando el mouse deja de estar presionado.
+	 * @param arg0
+	 */
 	@Override
-	public void mouseReleased(MouseEvent arg0) {
+	public void mouseReleased(MouseEvent arg0) { //No se hace uso de este método, mas se debe incluir debido a que se está haciendo un "implements".
 		// TODO Auto-generated method stub
 
 	}

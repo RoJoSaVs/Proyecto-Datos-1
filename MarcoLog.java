@@ -12,14 +12,18 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.border.MatteBorder;
-
+/**
+ * Clase: MarcoLog
+ * @author Jose
+ * @version 1.10.2018
+ */
 public class MarcoLog extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField tfJugador;
 
 	/**
-	 * Launch the application.
+	 * Inicia el marco.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -35,7 +39,7 @@ public class MarcoLog extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Crea el marco.
 	 */
 	public MarcoLog() {
 		setResizable(false);
