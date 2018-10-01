@@ -16,45 +16,48 @@ public class Figura {
     }
     public boolean cierraFig(Punto inicial, Punto recorre, Punto eliminar, LinkedList vecinos, LinkedList newFigura, int sizeEcurrent, LinkedList recorridos){
         vecinos.delete(eliminar);
-        if (inicial.getFila()==recorre.getFila() && inicial.getColumna()==inicial.getColumna()){
-            recorridos.insertFirst(recorre);
-            newFigura.insertFirst(recorre);
-            fCreadas.insertLast(newFigura);
-            while(recorridos.size()>0){
-                Punto current = (Punto) recorridos.recorrer(recorridos.size());
-                LinkedList vecinosC = current.getVecinos();
-                current.setAux(vecinosC);
-                recorridos.delete(current);
-            }
-            return true;
-        }
-        else if(sizeEcurrent>0){
+        eliminar.getAux().delete(recorre);
+        sizeEcurrent= vecinos.size()-1;
+        recorridos.insertFirst(recorre);
+        newFigura.insertFirst(recorre);
+        if(sizeEcurrent>=0){
             Punto eCurrent=(Punto) vecinos.recorrer(sizeEcurrent);
-            if(recorre.Enlazado(eCurrent)){
-                recorridos.insertFirst(eCurrent);
+            if (inicial.getFila()==recorre.getFila() && inicial.getColumna()==recorre.getColumna()){
+                fCreadas.insertLast(newFigura);
+                while(recorridos.size()-1>=0){
+                    Punto current = (Punto) recorridos.recorrer(recorridos.size()-1);
+                    LinkedList vecinosC = current.getEnlazados();
+                    current.setAux(vecinosC);
+                    recorridos.delete(current);
+                }
+                System.out.println("cerro");
+                return true;
+            }
+            else if(recorre.Enlazado(eCurrent)){
                 recorre.getAux().delete(eCurrent);
-                newFigura.insertFirst(eCurrent);
                 eCurrent.getAux().delete(recorre);
-                cierraFig(inicial, eCurrent,recorre,eCurrent.getAux(),newFigura,eCurrent.getVecinos().size(), recorridos);
+                return cierraFig(inicial, eCurrent,recorre,eCurrent.getAux(),newFigura,eCurrent.getAux().size()-1, recorridos);
             }
             else{
-                cierraFig(inicial,recorre,eliminar,vecinos,newFigura,sizeEcurrent--,recorridos);
+                return cierraFig(inicial,recorre,eliminar,vecinos,newFigura,sizeEcurrent--,recorridos);
             }
 
         }
-        else if(eliminar.getAux().size()>0){
+        else if(eliminar.getAux().size()-1>=0){
             newFigura.delete(recorre);
-            cierraFig(inicial,eliminar,recorre,eliminar.getAux(),newFigura,eliminar.getAux().size(), recorridos);
+            Punto newNext= (Punto) eliminar.getAux().recorrer(eliminar.getAux().size()-1);
+            return cierraFig(inicial,newNext,recorre,newNext.getAux(),newFigura,newNext.getAux().size()-1, recorridos);
 
         }
         else{
-            while(recorridos.size()>0){
-                Punto current = (Punto) recorridos.recorrer(recorridos.size());
-                LinkedList vecinosC = current.getVecinos();
+            while(recorridos.size()-1>=0){
+                Punto current = (Punto) recorridos.recorrer(recorridos.size()-1);
+                LinkedList vecinosC = current.getEnlazados();
                 current.setAux(vecinosC);
                 recorridos.delete(current);
             }
         }
+        System.out.println("No cerro");
         return false;
 
     }

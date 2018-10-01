@@ -60,6 +60,7 @@ public class LinkedList{
                 else{
                     previous.setNext(current.getNext());
                 }
+            this.size--;
             return current;
             }
             else{

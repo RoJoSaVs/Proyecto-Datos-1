@@ -24,6 +24,12 @@ class PanelMalla extends JPanel implements MouseListener{
 	private LinkedList coords_tmp = new LinkedList();
 	
 	private int JugadorC = 0;
+        
+        private Figura f_temp = new Figura();
+        
+        private LinkedList fg= new LinkedList();
+        
+        private LinkedList rec= new LinkedList();
 	
 
 	public PanelMalla() {
@@ -146,6 +152,8 @@ class PanelMalla extends JPanel implements MouseListener{
 									
 									inicial_tmp.enlazar(pto_temp);
 									pto_temp.enlazar(inicial_tmp);
+                                                                        f_temp.cierraFig(inicial_tmp, pto_temp, inicial_tmp, pto_temp.getAux(), fg, pto_temp.getAux().size()-1, rec);
+                                                                        
 									coords_tmp.deleteFirst();
 									coords_tmp.deleteFirst();
 									inicial_tmp.setEstado();
@@ -160,7 +168,7 @@ class PanelMalla extends JPanel implements MouseListener{
 									advertencia.setVisible(true);
 									advertencia.setLayout(null);
 
-									JLabel lbladv = new JLabel("Movimiento no válido");
+									JLabel lbladv = new JLabel("Movimiento no vï¿½lido");
 									lbladv.setFont(new Font("Tahoma", Font.BOLD, 14));
 									lbladv.setBounds(141, 34, 158, 14);
 									advertencia.add(lbladv);

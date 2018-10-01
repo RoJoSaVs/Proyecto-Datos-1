@@ -8,7 +8,7 @@ public class Punto extends Node {
     private LinkedList rect = new LinkedList();
     private LinkedList vecinos= new LinkedList();
     private LinkedList enlazados= new LinkedList();
-    private LinkedList enlazadosAux=enlazados;
+    private LinkedList enlazadosAux=new LinkedList();
     private boolean estado=false;
     
     public void setPos(int columna,int fila){
@@ -24,7 +24,7 @@ public class Punto extends Node {
     }
     public void enlazar(Punto newEnlace){
         this.enlazados.insertFirst(newEnlace);
-        this.enlazadosAux=this.enlazados;
+        this.enlazadosAux.insertFirst(newEnlace);
     }
     public boolean puedeEnlazar(Punto newEnlace){
         int c = this.vecinos.size()-1;
@@ -97,9 +97,9 @@ public class Punto extends Node {
         this.enlazados.insertFirst(vecino);
     }
     public boolean Enlazado(Punto verif){
-        int c=this.enlazados.size()-1;
+        int c=this.enlazadosAux.size()-1;
         while(c>=0){
-            if(verif==this.enlazados.recorrer(c)){
+            if(verif==this.enlazadosAux.recorrer(c)){
                 return true;
             }
             else{
