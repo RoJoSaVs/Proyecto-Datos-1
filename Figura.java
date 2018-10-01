@@ -46,7 +46,7 @@ public class Figura {
         else if(eliminar.getAux().size()-1>=0){
             newFigura.delete(recorre);
             Punto newNext= (Punto) eliminar.getAux().recorrer(eliminar.getAux().size()-1);
-            return cierraFig(inicial,newNext,recorre,newNext.getAux(),newFigura,newNext.getAux().size()-1, recorridos);
+            return cierraFig(inicial,newNext,inicial,newNext.getAux(),newFigura,newNext.getAux().size()-1, recorridos);
 
         }
         else{
