@@ -1,19 +1,50 @@
 package dots;
 
+/**
+ * Clase: LinkedList
+ * @autor Andrey Sanchez
+ * @autor Ronny Santamaria
+ * @autor Jose Solano
+ * @version 01.10.2018
+ */
+
 public class LinkedList{
     private Node head;
     private int size;
+    
+    /**
+     * Constructor
+     * 
+     */
 
     public LinkedList(){
         this.head= null;
         this.size=0;
     }
+    
+    /**
+     * Getter
+     * @return head 
+     */
+    
     public boolean isEmpty(){
         return this.head==null;
     }
+    
+    /**
+     * Getter
+     * @return size 
+     */
+    
     public int size(){
         return this.size;
     }
+    
+    /**
+     * Inserta un nuevo nodo al inicio
+     * @param data 
+     */
+    
     public void insertFirst(Object data){
         Node newNode= new Node();
         newNode.setData(data);
@@ -21,6 +52,11 @@ public class LinkedList{
         this.head=newNode;
         this.size++;
     }
+    
+    /**
+     * Borra el primer nodo
+     * @return null 
+     */
     
     public Node deleteFirst(){
         if(this.head != null){
@@ -30,6 +66,12 @@ public class LinkedList{
         }
         return null;
     }
+    
+    /**
+     * Muestra los nodos de la lista uno por uno
+     * 
+     */
+    
     public void displayList(){
         Node current= this.head;
         while(current != null){
@@ -37,6 +79,13 @@ public class LinkedList{
             current=current.getNext();
         }
     }
+    
+    /**
+     * Metodo para buscar nodos
+     * @param searchValue
+     * @return Node
+     */
+    
     public Node find(Object searchValue){
         Node current= this.head;
         while(current != null){
@@ -49,13 +98,19 @@ public class LinkedList{
         }
         return null;
     }
+    
+    /**
+     * Borra el nodo introducido
+     * @param searchValue 
+     */
+    
     public Node delete(Object searchValue){
         Node current= this.head;
         Node previous= this.head;
         while (current != null){
             if (current.getData().equals(searchValue)){
                 if (current.equals(this.head)){
-                    this.head = head.getNext();
+                    this.head = this.head.getNext();
                 }
                 else{
                     previous.setNext(current.getNext());
@@ -70,6 +125,12 @@ public class LinkedList{
         }
         return null;
     }
+    
+    /**
+     * Inserta un nodo al final de la lista
+     * @param data 
+     */
+
     public void insertLast(Object data){
         if (this.head==null) {
             Node nuevo = new Node();
@@ -90,6 +151,13 @@ public class LinkedList{
         }
         this.size++;
     }
+    
+    /**
+     * Metodo para recorrer y obtener un nodo
+     * @param i
+     * @return Object
+     */
+    
     public Object recorrer(int i){
         Node current = this.head;
         while(i > 0){

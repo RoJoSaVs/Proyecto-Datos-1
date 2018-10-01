@@ -1,7 +1,20 @@
 package dots;
 
+/**
+ * Clase: LinkedList
+ * @autor Andrey Sanchez
+ * @autor Ronny Santamaria
+ * @autor Jose Solano
+ * @version 01.10.2018
+ */
+
 public final class Constructor {
     private LinkedList Fila1= new LinkedList();
+    
+    /**
+     * Constructor
+     * @param tam 
+     */
 
     public Constructor(int tam){
         int size=tam;
@@ -25,9 +38,21 @@ public final class Constructor {
         setVecinos(this.Fila1,this.Fila1.size()-1);
 
     }
+    /**
+     * Getter
+     * @return Fila1
+     */
+    
     public LinkedList getLista(){
         return this.Fila1;
     }
+    
+    /**
+     * Setea los vecinos de cada punto en la matriz
+     * @param matriz
+     * @param contador
+     */
+    
     public void setVecinos(LinkedList matriz, int contador){
         int cFijo=contador;
         while(contador>=0){
