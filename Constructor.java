@@ -1,6 +1,6 @@
 package dots;
 
-public class Constructor {
+public final class Constructor {
     private LinkedList Fila1= new LinkedList();
 
     public Constructor(int tam){
@@ -22,12 +22,13 @@ public class Constructor {
             Fila1.insertFirst(columna);
             tam--;
         }
+        setVecinos(this.Fila1,this.Fila1.size()-1);
 
     }
     public LinkedList getLista(){
         return this.Fila1;
     }
-        public void setVecinos(LinkedList matriz, int contador){
+    public void setVecinos(LinkedList matriz, int contador){
         int cFijo=contador;
         while(contador>=0){
             LinkedList currentList=(LinkedList) matriz.recorrer(contador);
