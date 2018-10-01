@@ -22,21 +22,23 @@ public class Punto extends Node {
     public int getFila(){
         return this.fila;
     }
-    
-    public boolean enlazar(Punto newEnlace){
+    public void enlazar(Punto newEnlace){
+        this.enlazados.insertFirst(newEnlace);
+        this.enlazadosAux=this.enlazados;
+    }
+    public boolean puedeEnlazar(Punto newEnlace){
         int c = this.vecinos.size()-1;
-        while (c>0){
+        while (c>=0){
             if(newEnlace==this.vecinos.recorrer(c)){
-                int c2=this.enlazados.size();
-                while(c2>0){
-                    if(newEnlace==this.enlazados.recorrer(c)){
+                int c2=this.enlazados.size()-1;
+                while(c2>=0){
+                    if(newEnlace==this.enlazados.recorrer(c2)){
                         return false;
                     }
                     else{
                         c2--;
                     }
                 }
-                this.enlazados.insertFirst(newEnlace);
                 return true;
             }
             else{
@@ -95,13 +97,13 @@ public class Punto extends Node {
         this.enlazados.insertFirst(vecino);
     }
     public boolean Enlazado(Punto verif){
-        int recorrido= this.enlazados.size();
-        while (recorrido>0){
-            if(verif==this.enlazados.recorrer(recorrido)){
+        int c=this.enlazados.size()-1;
+        while(c>=0){
+            if(verif==this.enlazados.recorrer(c)){
                 return true;
             }
             else{
-                recorrido--;
+                c--;
             }
         }
         return false;
