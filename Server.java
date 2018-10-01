@@ -6,7 +6,7 @@ import java.net.*;
 public class Server{
 
 	static final int PUERTO = 5555;
-
+	/**Crea el socket para que el cliente empiece a transimtir datos*/
 	public void multiCuenta(){
 
 		Socket servicio = null;
@@ -14,6 +14,7 @@ public class Server{
 			ServerSocket servidor = new ServerSocket(PUERTO);
 			System.out.println("Esperando peticiones por el puerto " + PUERTO);
 			while(true){
+				//Acepta la peticion del cliente e inicia a escuchar por el puerto
 				servicio = servidor.accept();
 				DataInputStream flujoDatosEntrada = new DataInputStream(servicio.getInputStream());  //Crea un objeto para recibir mensajes del usuario
 				OutputStream escribir = servicio.getOutputStream(); //Objeto para mandar a escribir en el cliente
