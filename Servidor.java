@@ -8,23 +8,23 @@ import java.net.*;
         Socket servicio = null;
         DataInputStream flujoDatosEntrada = null;
         DataOutputStream flujoDatosSalida = null;
-
-        public Servidor(Socket servicio,DataInputStream x,DataOutputStream y){  //Constructor
+        /**Constructor*/
+        public Servidor(Socket servicio,DataInputStream x,DataOutputStream y){  
 
             this.servicio = servicio;
             flujoDatosEntrada = x;
             flujoDatosSalida = y;
         }
-
-        public void run(){  //Esto es un metodo, que corre cada hilo de nuestro servidor
+        /**Esto es un metodo, que corre cada hilo del servidor*/
+        public void run(){  
 
             System.out.println("Se acepto una nueva conexion");
 
             try{
 
-                String mensaje = flujoDatosEntrada.readUTF();  //Recibe un mensaje
+                String mensaje = flujoDatosEntrada.readUTF();//Recibe un mensaje
 
-                System.out.println(mensaje);  //IMprime el mensaje recibido
+                System.out.println(mensaje);  //Imprime el mensaje recibido
             }catch(Exception e){
 
             }
