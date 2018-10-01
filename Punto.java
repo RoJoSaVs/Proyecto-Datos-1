@@ -6,8 +6,8 @@ public class Punto extends Node {
     private int columna;
     private int fila;
     private LinkedList rect = new LinkedList();
-    private LinkedList vecinos;
-    private LinkedList enlazados;
+    private LinkedList vecinos= new LinkedList();
+    private LinkedList enlazados= new LinkedList();
     private LinkedList enlazadosAux=enlazados;
     private boolean estado=false;
     
@@ -89,10 +89,10 @@ public class Punto extends Node {
         this.enlazadosAux= newAux;
     }
     public void agregarVecino(Punto vecino){
-        vecinos.insertFirst(vecino);
+        this.vecinos.insertFirst(vecino);
     }
     public void agregarEnlazado(Punto vecino){
-        enlazados.insertFirst(vecino);
+        this.enlazados.insertFirst(vecino);
     }
     public boolean Enlazado(Punto verif){
         int recorrido= this.enlazados.size();
