@@ -24,12 +24,14 @@ class PanelMalla extends JPanel implements MouseListener{
 	private LinkedList coords_tmp = new LinkedList();
 	
 	private int JugadorC = 0;
-
+	
 
 	public PanelMalla() {
 	}
 
 	public void paintComponent(Graphics g) {
+		
+		//Malla.setVecinos(Malla.getLista(), Malla.getLista().size()-1);
 
 		LinkedList listaG = Malla.getLista();
 
@@ -123,8 +125,8 @@ class PanelMalla extends JPanel implements MouseListener{
 								
 								Object Y2 = coords_tmp.recorrer(1);
 								int DY = (int) Y2;
-								
-								if ((Math.abs(CX-DX) < 60) && (Math.abs(CY-DY) < 60 )) {
+								if (inicial_tmp.puedeEnlazar(pto_temp)) {
+//								if ((Math.abs(CX-DX) < 60) && (Math.abs(CY-DY) < 60 )) {
 									
 									Graphics g = getGraphics();
 									
@@ -142,11 +144,14 @@ class PanelMalla extends JPanel implements MouseListener{
 									g.fillOval(CX, CY, 21, 21);
 									g.fillOval(DX, DY, 21, 21);
 									
+									inicial_tmp.enlazar(pto_temp);
+									pto_temp.enlazar(inicial_tmp);
 									coords_tmp.deleteFirst();
 									coords_tmp.deleteFirst();
 									inicial_tmp.setEstado();
 									pto_inicial = false;
 									JugadorC ++;
+									
 								}else {
 									JFrame advertencia = new JFrame();
 									advertencia.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
