@@ -23,6 +23,7 @@ public class Figura {
         if(sizeEcurrent>=0){
             Punto eCurrent=(Punto) vecinos.recorrer(sizeEcurrent);
             if (inicial.getFila()==recorre.getFila() && inicial.getColumna()==recorre.getColumna()){
+                newFigura.insertFirst(eCurrent);
                 fCreadas.insertLast(newFigura);
                 while(recorridos.size()-1>=0){
                     Punto current = (Punto) recorridos.recorrer(recorridos.size()-1);
@@ -68,5 +69,9 @@ public class Figura {
         System.out.println("No cerro");
         return false;
 
+    }
+    public LinkedList getUltimaFig(){
+        LinkedList fig=(LinkedList) this.fCreadas.recorrer(this.fCreadas.size()-1);
+        return fig;
     }
 }
