@@ -30,6 +30,10 @@ public class Figura {
                     current.setAux(vecinosC);
                     recorridos.delete(current);
                 }
+                while(newFigura.size()-1>=0){
+                    Punto current = (Punto) newFigura.recorrer(newFigura.size()-1);
+                    newFigura.delete(current);
+                }
                 System.out.println("cerro");
                 return true;
             }
@@ -55,6 +59,10 @@ public class Figura {
                 LinkedList vecinosC = current.getEnlazados();
                 current.setAux(vecinosC);
                 recorridos.delete(current);
+            }
+            while(newFigura.size()-1>=0){
+                Punto current = (Punto) newFigura.recorrer(newFigura.size()-1);
+                newFigura.delete(current);
             }
         }
         System.out.println("No cerro");
