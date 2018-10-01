@@ -3,14 +3,14 @@ package dots;
 import java.net.*;
 import java.io.*;
 import java.util.Scanner;
-
+/**Clase que va a establecer la conexion entre el usuario y el servidor*/
 public class Cliente {
     private Socket socket;
     private DataInputStream bufferDeEntrada = null;
     private DataOutputStream bufferDeSalida = null;
     Scanner teclado = new Scanner(System.in);
     final String COMANDO_TERMINACION = "salir()";
-
+    /**Inicia la conexion por el socket*/
     public void levantarConexion(String ip, int puerto) {
         try {
             socket = new Socket(ip, puerto);
@@ -24,7 +24,7 @@ public class Cliente {
     public static void mostrarTexto(String s) {
         System.out.println(s);
     }
-
+    /**Recibe y envia mensajes por el socket*/
     public void abrirFlujos() {
         try {
             bufferDeEntrada = new DataInputStream(socket.getInputStream());
@@ -34,7 +34,7 @@ public class Cliente {
             mostrarTexto("Error en la apertura de flujos");
         }
     }
-
+    /**Envia el texto ingresado por el usuario*/
     public void enviar(String s) {
         try {
             bufferDeSalida.writeUTF(s);
@@ -43,7 +43,7 @@ public class Cliente {
             mostrarTexto("IOException on enviar");
         }
     }
-
+    /**Cierra la conexion del socket con el comando "salir()"*/
     public void cerrarConexion() {
         try {
             bufferDeEntrada.close();
@@ -56,7 +56,8 @@ public class Cliente {
             System.exit(0);
         }
     }
-
+    /**Corre en un hilo para que el cliente se mantenga escuchando y le 
+    *permita escribir*/
     public void ejecutarConexion(String ip, int puerto) {
         Thread hilo = new Thread(new Runnable() {
             @Override
@@ -72,7 +73,7 @@ public class Cliente {
         });
         hilo.start();
     }
-
+    /**Recibe los datos ingresados por el usuario*/
     public void recibirDatos() {
         String st = "";
         try {
@@ -83,7 +84,7 @@ public class Cliente {
             } while (!st.equals(COMANDO_TERMINACION));
         } catch (IOException e) {}
     }
-
+    /**Muestra en consola los datos ingresados por el usuario*/
     public void escribirDatos() {
         String entrada = "";
         while (true) {
