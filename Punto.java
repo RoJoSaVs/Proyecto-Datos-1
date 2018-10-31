@@ -9,7 +9,7 @@ package dots;
  */
 
 public class Punto extends Node {
-    private int x;
+    private int x=0;
     private int y;
     private int columna;
     private int fila;
